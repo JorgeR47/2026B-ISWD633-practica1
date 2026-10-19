@@ -16,22 +16,29 @@ docker run -d --name <nombre contenedor> --mount type=bind,source=<ruta carpeta 
 
 ### Crear un contenedor con la imagen nginx:alpine, mapear todos por puertos, para la ruta carpeta host colocar el directorio en donde se encuentra la carpeta html en tu computador y para la ruta carpeta contenedor: /usr/share/nginx/html (esta ruta se obtiene al revisar la documentación de la imagen)
 ![Volúmenes](volumen-host.PNG)
-# COMPLETAR CON EL COMANDO
+# docker run -d  --name nginx -p 3000:80 -v  "C:\Users\vbox\docker\nginx\html":/usr/share/nginx/html  nginx:alpine
 
 ### ¿Qué sucede al ingresar al servidor de nginx?
-# COMPLETAR CON LA RESPUESTA A LA PREGUNTA
+
+# Al ejecutar el comando "docker exec -it nginx sh" se ingresa normalmente al contenedor. Al refrescar la página http://localhost:3000/ anteriormente se aprecia el mensaje "403 Forbidden nginx/1.31.6". 
+
 
 ### ¿Qué pasa con el archivo index.html del contenedor?
-# COMPLETAR CON LA RESPUESTA A LA PREGUNTA
+
+# El archivo index.html queda oculto por el contenido de la carpeta del computador (C:\Users\vbox\docker\nginx\html). Al ingresar al navegador (http://localhost/index.php) se muestra el mensaeje "No se puede acceder a este sitio web"
+
 
 ### Ir a https://html5up.net/ y descargar un template gratuito, descomprirlo dentro de tu computador en la carpeta html
+
 ### ¿Qué sucede al ingresar al servidor de nginx?
-# COMPLETAR CON LA RESPUESTA A LA PREGUNTA
+# Al ejecutar el comando "docker exec -it nginx sh" se ingresa normalmente al contenedor. Después de la descromprensión, al refrescar la página http://localhost:3000/  se aprecia el template. 
 
 ### Eliminar el contenedor
-# COMPLETAR CON EL COMANDO
+# docker rm -f nginx . 
+# Este comando fuerza la eliminación, a pesar de que el contenedor se está ejecutando.
+
 
 ### ¿Qué sucede al crear nuevamente un contenedor montado al directorio definidos anteriormente?
-# COMPLETAR CON LA RESPUESTA A LA PREGUNTA
+# Al eliminar el contenedor, los archivos del host se mantienen. Al crear nuevamente el contenedor, incluso se visualiza el template al ingresar al navegador. 
 
 
